@@ -6,25 +6,50 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from "react";
+import { Platform, StyleSheet, Text, View, Image } from "react-native";
+import { ApolloProvider } from "react-apollo";
+import { ApolloClient } from "apollo-client";
+import { HttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
+import { END_POINT } from "./config";
+
+const apolloClient = new ApolloClient({
+  link: new HttpLink({ uri: END_POINT }),
+  cache: new InMemoryCache()
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+const reservationListings = gql`
+  query {
+    reservations {
+      name
+      hotelName
+      arrivalDate
+    }
+  }
+`;
+
+export default class App extends Component {
   render() {
+    console.log("ENDPOINT", END_POINT, this.props);
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <ApolloProvider client={apolloClient}>
+        <Query query={reservationListings}>
+          <View style={styles.container}>
+            <Image
+              source={{ uri: "https://i.imgur.com/seSekaX.png" }}
+              style={{ width: 400, height: 400, resizeMode: "contain" }}
+            />
+            <Text style={styles.instructions}>
+              Lookup and book reservations from your phone!
+            </Text>
+          </View>
+        </Query>
+      </ApolloProvider>
     );
   }
 }
@@ -32,18 +57,18 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF"
   },
   welcome: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    textAlign: "center",
+    margin: 10
   },
   instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5
+  }
 });
