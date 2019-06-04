@@ -17,38 +17,19 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
 import { END_POINT } from "./config";
+import Listings from "./Listings";
 
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: END_POINT }),
   cache: new InMemoryCache()
 });
 
-const reservationListings = gql`
-  query {
-    reservations {
-      name
-      hotelName
-      arrivalDate
-    }
-  }
-`;
-
 export default class App extends Component {
   render() {
-    console.log("ENDPOINT", END_POINT, this.props);
+    // console.log("ENDPOINT", END_POINT, this.props);
     return (
       <ApolloProvider client={apolloClient}>
-        <Query query={reservationListings}>
-          <View style={styles.container}>
-            <Image
-              source={{ uri: "https://i.imgur.com/seSekaX.png" }}
-              style={{ width: 400, height: 400, resizeMode: "contain" }}
-            />
-            <Text style={styles.instructions}>
-              Lookup and book reservations from your phone!
-            </Text>
-          </View>
-        </Query>
+        <Listings />
       </ApolloProvider>
     );
   }
