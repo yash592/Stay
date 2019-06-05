@@ -29,19 +29,30 @@ const query = gql`
 `;
 
 class Listings extends PureComponent {
-  renderReservations = ({ item }) => (
-    // if (this.props.data.loading)  <Text>Loading</Text>
+  renderReservations = ({ item }) => {
+    console.log(this.props.data.loading);
 
-    <ReservationCard
-      name={item.name}
-      hotelName={item.hotelName}
-      arrivalDate={item.arrivalDate}
-      departureDate={item.departureDate}
-    />
-  );
+    return (
+      <ReservationCard
+        name={item.name}
+        hotelName={item.hotelName}
+        arrivalDate={item.arrivalDate}
+        departureDate={item.departureDate}
+      />
+    );
+  };
 
   render() {
     console.log(this.props);
+    if (this.props.data.loading) {
+      return (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Text style={{ fontSize: 46 }}>Loading</Text>
+        </View>
+      );
+    }
 
     return (
       <View>
