@@ -15,9 +15,8 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-
 import { END_POINT } from "./config";
-import Listings from "./Listings";
+import CreateListing from "./CreateListing";
 
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: END_POINT }),
@@ -29,7 +28,7 @@ export default class App extends Component {
     // console.log("ENDPOINT", END_POINT, this.props);
     return (
       <ApolloProvider client={apolloClient}>
-        <Listings />
+        <CreateListing />
       </ApolloProvider>
     );
   }

@@ -15,7 +15,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { ReservationCard } from "./src/components/common/ReservationCard";
+import { ReservationCard } from "../common/ReservationCard";
 
 const query = gql`
   query {
@@ -33,12 +33,20 @@ class Listings extends PureComponent {
     console.log(this.props.data.loading);
 
     return (
-      <ReservationCard
-        name={item.name}
-        hotelName={item.hotelName}
-        arrivalDate={item.arrivalDate}
-        departureDate={item.departureDate}
-      />
+      <View
+        style={{
+          backgroundColor: "#4C508E",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <ReservationCard
+          name={item.name}
+          hotelName={item.hotelName}
+          arrivalDate={item.arrivalDate}
+          departureDate={item.departureDate}
+        />
+      </View>
     );
   };
 
@@ -55,12 +63,13 @@ class Listings extends PureComponent {
     }
 
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <FlatList
           data={this.props.data.reservations}
           initialNumToRender={7}
           renderItem={this.renderReservations}
         />
+        <Text>Search bar goes here</Text>
       </View>
     );
   }
