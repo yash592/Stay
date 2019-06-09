@@ -6,7 +6,8 @@ import {
   View,
   Image,
   ScrollView,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from "react-native";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
@@ -15,11 +16,13 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { ReservationCard } from "../common/ReservationCard";
+import { ReservationCard } from "../../common/ReservationCard";
+import { BottomNav } from "../../common/BottomNav";
+import { Header } from "../../common/Header";
 
 const query = gql`
   query {
-    reservations {
+    reservations(orderBy: createdAt_DESC) {
       name
       hotelName
       arrivalDate
@@ -28,14 +31,14 @@ const query = gql`
   }
 `;
 
-class Listings extends PureComponent {
+class Listings extends Component {
   renderReservations = ({ item }) => {
-    console.log(this.props.data.loading);
+    // console.log(this.props.data.loading);
 
     return (
       <View
         style={{
-          backgroundColor: "#4C508E",
+          backgroundColor: "",
           alignItems: "center",
           justifyContent: "center"
         }}
@@ -51,8 +54,10 @@ class Listings extends PureComponent {
   };
 
   render() {
-    console.log(this.props);
-    if (this.props.data.loading) {
+    const { loading, reservations } = this.props.data;
+    // const { reservations } = this.props.data;
+
+    if (loading) {
       return (
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -64,12 +69,13 @@ class Listings extends PureComponent {
 
     return (
       <View style={{ flex: 1 }}>
+        <Header headerText="RESERVATIONS" />
         <FlatList
-          data={this.props.data.reservations}
-          initialNumToRender={7}
+          data={reservations}
+          initialNumToRender={3}
           renderItem={this.renderReservations}
         />
-        <Text>Search bar goes here</Text>
+        <BottomNav />
       </View>
     );
   }

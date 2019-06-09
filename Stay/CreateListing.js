@@ -3,6 +3,7 @@ import { View, Text, TextInput, Image, Button } from "react-native";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
+import { FormInput } from "./src/components/common/FormInput";
 
 const addReservationMutation = gql`
   mutation createReservation(
@@ -48,8 +49,10 @@ class CreateListing extends Component {
                 fullName: "Joe Lundiani",
                 hotel: "LemonTree",
                 arrival: "06/05/2019",
-                departure: "06/12/2019"
+                departre: "06/12/2019"
               }
+            }).then((res, rej) => {
+              console.log(rej);
             });
           }}
         />
@@ -63,32 +66,18 @@ class CreateListing extends Component {
       <View
         style={{
           flex: 1,
+          flexDirection: "row",
+          flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "center",
-          padding: 10
+          backgroundColor: "#4C508E"
         }}
       >
-        <Text
-          style={{
-            fontSize: 30,
-            color: "black",
-            fontFamily: "sans-serif-condensed"
-          }}
-        >
-          Create a Reservation
-        </Text>
-        <TextInput
-          style={{
-            width: "90%",
-            height: 40,
-            borderColor: "black",
-            borderWidth: 1,
-            borderRadius: 10,
-            padding: 10
-          }}
-          placeholder="First Name"
-          placeholderTextColor="black"
-        />
+        <FormInput placeholder="First Name" placeholderTextColor="black" />
+
+        <FormInput placeholder="Hotel Name" placeholderTextColor="black" />
+        <FormInput placeholder="Arrival date" placeholderTextColor="black" />
+        <FormInput placeholder="Departure date" placeholderTextColor="black" />
         {this.onReserve()}
       </View>
     );
