@@ -16,10 +16,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import { END_POINT } from "./config";
-import CreateListing from "./CreateListing";
-import Listings from "./src/components/screens/Listings/Listings";
-import Router from "./Router";
-import { Home } from "./src/components/screens/Home";
+import Routes from "./Routes";
 
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: END_POINT }),
@@ -31,7 +28,7 @@ export default class App extends Component {
     // console.log("ENDPOINT", END_POINT, this.props);
     return (
       <ApolloProvider client={apolloClient}>
-        <Home />
+        <Routes />
       </ApolloProvider>
     );
   }
