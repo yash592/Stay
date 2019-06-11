@@ -7,28 +7,7 @@ import { FormInput } from "../../common/FormInput";
 import { Scene, Router, Actions } from "react-native-router-flux";
 import { Header } from "../../common/Header";
 import { BottomNav } from "../../common/BottomNav";
-import { query } from "../../../queries/queries.js";
-
-const addReservationMutation = gql`
-  mutation createReservation(
-    $fullName: String!
-    $hotel: String!
-    $arrival: String!
-    $departure: String!
-  ) {
-    createReservation(
-      data: {
-        name: $fullName
-        hotelName: $hotel
-        departureDate: $departure
-        arrivalDate: $arrival
-      }
-    ) {
-      name
-      hotelName
-    }
-  }
-`;
+import { query, addReservationMutation } from "../../../queries/queries.js";
 
 class CreateListing extends Component {
   constructor(props) {
@@ -47,32 +26,36 @@ class CreateListing extends Component {
       mutation={addReservationMutation}
       refetchQueries={[{ query: query }]}
     >
-      {(createReservation, { data }) => (
-        <Button
-          title="Book"
-          color="#3DDB93"
-          style={{ width: "100%" }}
-          onPress={() => {
-            createReservation({
-              variables: {
-                fullName: "Joe Lundiani",
-                hotel: "LemonTree",
-                arrival: "06/05/2019",
-                departure: "06/12/2019"
-              }
-            }).then(res => {
-              if (!res) {
-                console.log("Not sucessful");
-              }
-              return (
-                <View style={{ flex: 1 }}>
-                  <Text>{res.data.createReservation.hotelName}</Text>
-                </View>
-              );
-            });
-          }}
-        />
-      )}
+      {(createReservation, { data, loading, error }) => {
+        console.log(data, loading, error);
+        if (data) {
+          return <Text style={{ fontSize: 23 }}>Booking sucessful!</Text>;
+        }
+        return (
+          <Button
+            title="Book"
+            color="#3DDB93"
+            style={{ width: "100%" }}
+            onPress={() => {
+              createReservation({
+                variables: {
+                  fullName: this.state.name,
+                  hotel: this.state.hotelName,
+                  arrival: this.state.arrivalDate,
+                  departure: this.state.departureDate
+                }
+              }).then(() => {
+                this.setState({
+                  name: "",
+                  hotelName: "",
+                  arrivalDate: "",
+                  departureDate: ""
+                });
+              });
+            }}
+          />
+        );
+      }}
     </Mutation>
   );
 
@@ -109,14 +92,14 @@ class CreateListing extends Component {
           <FormInput
             placeholder="Arrival date"
             placeholderTextColor="black"
-            keyboardType="number-pad"
+            keyboardType="numeric"
             onChangeText={arrivalDate => this.setState({ arrivalDate })}
             value={this.state.arrivalDate}
           />
           <FormInput
             placeholder="Departure date"
             placeholderTextColor="black"
-            keyboardType="number-pad"
+            keyboardType="numeric"
             onChangeText={departureDate => this.setState({ departureDate })}
             value={this.state.departureDate}
           />

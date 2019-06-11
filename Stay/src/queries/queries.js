@@ -1,12 +1,4 @@
 import gql from "graphql-tag";
-//
-// export const query = gql`
-//    {
-//     reservations {
-//       name
-//     }
-//   }
-// }`;
 
 export const query = gql`
   query {
@@ -15,6 +7,27 @@ export const query = gql`
       hotelName
       arrivalDate
       departureDate
+    }
+  }
+`;
+
+export const addReservationMutation = gql`
+  mutation createReservation(
+    $fullName: String!
+    $hotel: String!
+    $arrival: String!
+    $departure: String!
+  ) {
+    createReservation(
+      data: {
+        name: $fullName
+        hotelName: $hotel
+        departureDate: $departure
+        arrivalDate: $arrival
+      }
+    ) {
+      name
+      hotelName
     }
   }
 `;
