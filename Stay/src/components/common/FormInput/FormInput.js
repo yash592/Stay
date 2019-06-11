@@ -3,11 +3,13 @@ import { View, Text, TextInput } from "react-native";
 
 const FormInput = props => (
   <View style={styles.containerStyle}>
-    <Text>{props.text}</Text>
     <TextInput
       style={styles.textInput}
       placeholder={props.placeholder}
       placeholderTextColor={props.placeholderTextColor}
+      onChangeText={props.onChangeText}
+      value={props.value}
+      keyboardType={props.keyboardType}
     />
   </View>
 );
@@ -17,13 +19,13 @@ const styles = {
     width: "100%",
     backgroundColor: "white",
     height: 40,
-    borderColor: "black",
+    borderColor: "#d1d7db",
     borderWidth: 1,
-    borderRadius: 10,
+
     padding: 10
   },
   containerStyle: {
-    width: "42%",
+    width: "92%",
     height: 50,
     margin: 5
   }

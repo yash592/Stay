@@ -1,4 +1,4 @@
-// import gql from "graphql-tag";
+import gql from "graphql-tag";
 //
 // export const query = gql`
 //    {
@@ -7,3 +7,14 @@
 //     }
 //   }
 // }`;
+
+export const query = gql`
+  query {
+    reservations(orderBy: createdAt_DESC) {
+      name
+      hotelName
+      arrivalDate
+      departureDate
+    }
+  }
+`;

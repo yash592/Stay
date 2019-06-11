@@ -1,7 +1,7 @@
 import React, { Compponent } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
 
-const BottomNav = () => (
+const BottomNav = props => (
   <View
     style={{
       height: 60,
@@ -18,6 +18,7 @@ const BottomNav = () => (
   >
     <TouchableOpacity
       style={{ justifyContent: "center", alignItems: "center" }}
+      onPress={props.onPress}
     >
       <Image
         source={require("../../assets/images/booking.png")}
@@ -29,6 +30,7 @@ const BottomNav = () => (
     </TouchableOpacity>
     <TouchableOpacity
       style={{ justifyContent: "center", alignItems: "center" }}
+      onPress={props.onPress}
     >
       <Image
         source={require("../../assets/images/list.png")}

@@ -19,17 +19,8 @@ import { Query } from "react-apollo";
 import { ReservationCard } from "../../common/ReservationCard";
 import { BottomNav } from "../../common/BottomNav";
 import { Header } from "../../common/Header";
-
-const query = gql`
-  query {
-    reservations(orderBy: createdAt_DESC) {
-      name
-      hotelName
-      arrivalDate
-      departureDate
-    }
-  }
-`;
+import { Scene, Router, Actions } from "react-native-router-flux";
+import { query } from "../../../queries/queries.js";
 
 class Listings extends Component {
   renderReservations = ({ item }) => {
@@ -38,7 +29,6 @@ class Listings extends Component {
     return (
       <View
         style={{
-          backgroundColor: "",
           alignItems: "center",
           justifyContent: "center"
         }}
@@ -69,13 +59,13 @@ class Listings extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <Header headerText="RESERVATIONS" />
+        <Header headerText={"RESERVATIONS"} />
         <FlatList
           data={reservations}
           initialNumToRender={3}
           renderItem={this.renderReservations}
         />
-        <BottomNav />
+        <BottomNav onPress={() => Actions.createlisting()} />
       </View>
     );
   }
