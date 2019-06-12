@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
+// ReservationCard reusable pure component which can be used across the app
+
 const ReservationCard = props => {
   // console.log(props);
   return (

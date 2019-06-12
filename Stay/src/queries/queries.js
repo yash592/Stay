@@ -1,5 +1,7 @@
 import gql from "graphql-tag";
 
+// query to return all existing reservations
+
 export const query = gql`
   query {
     reservations(orderBy: createdAt_DESC) {
@@ -10,6 +12,8 @@ export const query = gql`
     }
   }
 `;
+
+// mutation to add a new reservation to the backend
 
 export const addReservationMutation = gql`
   mutation createReservation(

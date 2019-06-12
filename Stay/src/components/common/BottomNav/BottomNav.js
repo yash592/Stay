@@ -1,6 +1,8 @@
 import React, { Compponent } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
 
+// BottomNav reusable component
+
 const BottomNav = props => (
   <View
     style={{
