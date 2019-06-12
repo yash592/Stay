@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, TextInput } from "react-native";
 
+// FormInput reusable component taking in placeholder, onChangeText and keyboardType as a prop
+
 const FormInput = props => (
   <View style={styles.containerStyle}>
     <TextInput

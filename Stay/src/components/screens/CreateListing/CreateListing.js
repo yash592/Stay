@@ -12,19 +12,39 @@ import { query, addReservationMutation } from "../../../queries/queries.js";
 class CreateListing extends Component {
   constructor(props) {
     super(props);
+    // initialize the state inside the constructor
     this.state = {
       name: "",
       hotelName: "",
       arrivalDate: "",
       departureDate: ""
     };
-    // this.onReserve = this.onReserve.bind(this);
+    this.onReserve = this.onReserve.bind(this);
+    this.updateCache = this.updateCache.bind(this);
   }
+
+  // updateCache function to update the cached data from the query and concat it with the new data
+
+  updateCache = (cache, { data: { createReservation } }) => {
+    const { reservations } = cache.readQuery({ query: query });
+
+    cache.writeQuery({
+      query: query,
+      data: {
+        reservations: reservations.concat(createReservation)
+      }
+    });
+    console.log(reservations);
+  };
+
+  // onReserve function called from ln 124
+  // renders a button and calls onPress to make a reservation
 
   onReserve = () => (
     <Mutation
       mutation={addReservationMutation}
       refetchQueries={[{ query: query }]}
+      updateCache={this.updateCache}
     >
       {(createReservation, { data, loading, error }) => {
         console.log(data, loading, error);
@@ -39,10 +59,10 @@ class CreateListing extends Component {
             onPress={() => {
               createReservation({
                 variables: {
-                  fullName: this.state.name,
-                  hotel: this.state.hotelName,
-                  arrival: this.state.arrivalDate,
-                  departure: this.state.departureDate
+                  fullName: "Joe",
+                  hotel: "Hilton",
+                  arrival: "05/04/2020",
+                  departure: "05/04/2020"
                 }
               }).then(() => {
                 this.setState({
@@ -51,6 +71,8 @@ class CreateListing extends Component {
                   arrivalDate: "",
                   departureDate: ""
                 });
+                // Call on Actions from react-native-router-flux to go to a different screen once mutation is complete
+                Actions.listings();
               });
             }}
           />

@@ -22,10 +22,13 @@ import { Header } from "../../common/Header";
 import { Scene, Router, Actions } from "react-native-router-flux";
 import { query } from "../../../queries/queries.js";
 
-class Listings extends Component {
-  renderReservations = ({ item }) => {
-    // console.log(this.props.data.loading);
+// Listings component to display all reservations as the default screen
 
+class Listings extends Component {
+  // renderReservations function for the flatList
+  // -- returns the ReservationCard component and passes it the props
+
+  renderReservations = ({ item }) => {
     return (
       <View
         style={{
@@ -46,6 +49,8 @@ class Listings extends Component {
   render() {
     const { loading, reservations } = this.props.data;
     // const { reservations } = this.props.data;
+
+    // simple loading component to let the user know that the screen is loading
 
     if (loading) {
       return (

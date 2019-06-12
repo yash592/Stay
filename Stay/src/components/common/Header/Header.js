@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-// Make a component
+// reusable header sticky component with title passed down as a prop
+
 const Header = props => {
   const { textStyle, viewStyle } = styles;
 

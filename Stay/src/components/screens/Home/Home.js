@@ -9,6 +9,8 @@ import {
 import { ReservationCard } from "../../common/ReservationCard";
 import { Actions } from "react-native-router-flux";
 
+// Home component to show the list of available screens
+
 const Home = () => (
   <View style={styles.container}>
     <TouchableOpacity style={styles.tile}>

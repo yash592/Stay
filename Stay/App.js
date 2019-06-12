@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import { ApolloProvider } from "react-apollo";
@@ -18,6 +10,8 @@ import { Query } from "react-apollo";
 import { END_POINT } from "./config";
 import Routes from "./Routes";
 
+// initialize an apolloClient with the endpoint and cache
+
 const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: END_POINT }),
   cache: new InMemoryCache()
@@ -25,7 +19,7 @@ const apolloClient = new ApolloClient({
 
 export default class App extends Component {
   render() {
-    // console.log("ENDPOINT", END_POINT, this.props);
+    console.log("ENDPOINT", END_POINT, this.props, apolloClient);
     return (
       <ApolloProvider client={apolloClient}>
         <Routes />
