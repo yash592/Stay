@@ -8,17 +8,8 @@ const Routes = () => {
     <Router>
       <Scene key="root">
         <Scene key="main" hideNavBar>
-          <Scene
-            onRight={() => Actions.createlisting()}
-            key="listings"
-            component={Listings}
-            initial
-          />
-          <Scene
-            key="createlisting"
-            component={CreateListing}
-            title="Create Employee"
-          />
+          <Scene key="listings" component={Listings} initial />
+          <Scene key="createlisting" component={CreateListing} />
         </Scene>
       </Scene>
     </Router>

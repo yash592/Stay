@@ -2,9 +2,10 @@ import gql from "graphql-tag";
 
 // query to return all existing reservations
 
-export const query = gql`
+export const getAllReservations = gql`
   query {
     reservations(orderBy: createdAt_DESC) {
+      id
       name
       hotelName
       arrivalDate
