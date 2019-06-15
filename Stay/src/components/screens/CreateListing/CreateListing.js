@@ -7,7 +7,10 @@ import { FormInput } from "../../common/FormInput";
 import { Scene, Router, Actions } from "react-native-router-flux";
 import { Header } from "../../common/Header";
 import { BottomNav } from "../../common/BottomNav";
-import { query, addReservationMutation } from "../../../queries/queries.js";
+import {
+  getAllReservations,
+  addReservationMutation
+} from "../../../queries/queries.js";
 
 class CreateListing extends Component {
   constructor(props) {
@@ -26,10 +29,10 @@ class CreateListing extends Component {
   // updateCache function to update the cached data from the query and concat it with the new data
 
   updateCache = (cache, { data: { createReservation } }) => {
-    const { reservations } = cache.readQuery({ query: query });
+    const { reservations } = cache.readQuery({ query: getAllReservations });
 
     cache.writeQuery({
-      query: query,
+      query: getAllReservations,
       data: {
         reservations: reservations.concat(createReservation)
       }
@@ -41,11 +44,7 @@ class CreateListing extends Component {
   // renders a button and calls onPress to make a reservation
 
   onReserve = () => (
-    <Mutation
-      mutation={addReservationMutation}
-      refetchQueries={[{ query: query }]}
-      updateCache={this.updateCache}
-    >
+    <Mutation mutation={addReservationMutation} update={this.updateCache}>
       {(createReservation, { data, loading, error }) => {
         console.log(data, loading, error);
         if (data) {
@@ -59,10 +58,10 @@ class CreateListing extends Component {
             onPress={() => {
               createReservation({
                 variables: {
-                  fullName: "Joe",
-                  hotel: "Hilton",
-                  arrival: "05/04/2020",
-                  departure: "05/04/2020"
+                  fullName: this.state.name,
+                  hotel: this.state.hotelName,
+                  arrival: this.state.arrivalDate,
+                  departure: this.state.departureDate
                 }
               }).then(() => {
                 this.setState({
