@@ -30,6 +30,7 @@ class CreateListing extends Component {
 
   updateCache = (cache, { data: { createReservation } }) => {
     const { reservations } = cache.readQuery({ query: getAllReservations });
+    console.log(updateCache);
 
     cache.writeQuery({
       query: getAllReservations,
