@@ -62,7 +62,6 @@ class Listings extends Component {
     return (
       <View style={{ flex: 1 }}>
         <Header headerText={"RESERVATIONS"} />
-
         <FlatList
           data={reservations}
           initialNumToRender={3}
@@ -70,7 +69,6 @@ class Listings extends Component {
           keyExtractor={this.keyExtractor}
           initialNumToRender={8}
         />
-
         <BottomNav />
       </View>
     );
