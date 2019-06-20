@@ -5,12 +5,26 @@
 import "react-native";
 import renderer from "react-test-renderer";
 import React from "react";
-import { Home } from "../src/components/screens/Home";
+import Adapter from "enzyme-adapter-react-16";
+import { configure } from "enzyme";
 
-// Note: test renderer must be required after react-native.
-// import renderer from "react-test-renderer";
+configure({ adapter: new Adapter() });
+import Listings from "../src/components/screens/Listings/Listings";
+import { FormInput } from "../src/components/common/FormInput";
+import { shallow } from "enzyme";
 
-it("renders correctly", () => {
-  const tree = renderer.create(<Home />).toJSON();
-  expect(tree).toMatchSnapshot();
+import { END_POINT } from "../config";
+import { MockedProvider } from "react-apollo/test-utils";
+import {
+  getAllReservations,
+  getOneReservation
+} from "../src/queries/queries.js";
+// import { mocks } from "./mocks";
+const wait = require("waait");
+
+describe("Listing components renders correctly", () => {
+  it("Shallow rendering", () => {
+    const component = shallow(<FormInput />);
+    expect(component).toMatchSnapshot();
+  });
 });
