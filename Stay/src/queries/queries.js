@@ -36,3 +36,12 @@ export const addReservationMutation = gql`
     }
   }
 `;
+
+export const getOneReservation = gql`
+  query {
+    reservation(where: { id: "cjx284y6ztm6q0b42vu23am2z" }) {
+      id
+      name
+    }
+  }
+`;

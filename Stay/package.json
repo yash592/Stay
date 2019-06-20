@@ -10,12 +10,17 @@
     "apollo-cache-inmemory": "^1.6.0",
     "apollo-client": "^2.6.0",
     "apollo-link-http": "^1.5.14",
+    "enzyme-react-16-adapter-setup": "^0.1.0",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
+    "jest-enzyme": "^7.0.2",
     "react": "16.8.3",
     "react-apollo": "^2.5.6",
+    "react-dom": "^16.8.6",
     "react-native": "0.59.8",
-    "react-native-router-flux": "^4.0.6"
+    "react-native-router-flux": "^4.0.6",
+    "save-dev": "^2.0.0",
+    "waait": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -30,6 +35,11 @@
   "jest": {
     "preset": "react-native",
     "cacheDirectory": "./cache",
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "setupFiles": [
+      "enzyme-react-16-adapter-setup"
+    ],
+    "setupEnvScriptFile": "node_modules/react-native/jestSupport/env.js",
     "coveragePathIgnorePatterns": [
       "./app/utils/vendor"
     ],
@@ -40,6 +50,14 @@
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!react-native|react-clone-referenced-element|react-navigation)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "ts",
+      "tsx",
+      "node"
     ]
   }
 }

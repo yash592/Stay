@@ -29,8 +29,6 @@ class Listings extends Component {
   // renderReservations function for the flatList
   // -- returns the ReservationCard component and passes it the props
 
-  keyExtractor = (item, index) => item.id;
-
   renderReservations = ({ item }) => {
     // console.log(item);
     return (
@@ -51,6 +49,7 @@ class Listings extends Component {
   };
 
   render() {
+    console.log(this.props.data);
     const { loading, reservations } = this.props.data;
 
     // simple loading component to let the user know that the screen is loading

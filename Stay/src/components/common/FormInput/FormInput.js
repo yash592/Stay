@@ -23,7 +23,6 @@ const styles = {
     height: 40,
     borderColor: "#d1d7db",
     borderWidth: 1,
-
     padding: 10
   },
   containerStyle: {
