@@ -5,7 +5,7 @@ const Loading = () => (
   <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
     <Image
       source={{ uri: "https://i.imgur.com/u6kVKHP.gif" }}
-      style={{ width: 64, height: 64 }}
+      style={{ width: 100, height: 100 }}
     />
   </View>
 );

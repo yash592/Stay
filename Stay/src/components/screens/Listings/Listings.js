@@ -28,6 +28,7 @@ import { getAllReservations } from "../../../queries/queries.js";
 class Listings extends Component {
   // renderReservations function for the flatList
   // -- returns the ReservationCard component and passes it the props
+  keyExtractor = (item, index) => item.id;
 
   renderReservations = ({ item }) => {
     // console.log(item);
