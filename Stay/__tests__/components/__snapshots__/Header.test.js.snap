@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly Shallow rendering 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#D0FFC8",
+      "elevation": 2,
+      "height": 60,
+      "justifyContent": "center",
+      "position": "relative",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.2,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontFamily": "sans-serif-condensed",
+        "fontSize": 20,
+      }
+    }
+  />
+</View>
+`;

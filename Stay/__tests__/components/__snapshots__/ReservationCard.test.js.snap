@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReservationCard component renders correctly Shallow rendering 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "borderRadius": 10,
+      "elevation": 5,
+      "flex": 1,
+      "height": 150,
+      "marginTop": 30,
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 10,
+        "width": 10,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 1,
+      "width": "95%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "left": "5%",
+        "position": "absolute",
+        "top": "10%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "black",
+          "fontFamily": "sans-serif-condensed",
+          "fontSize": 30,
+          "fontWeight": "normal",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "position": "absolute",
+        "right": "5%",
+        "top": "10%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/components/assets/images/arrival.png",
+        }
+      }
+      style={
+        Object {
+          "height": 28,
+          "opacity": 0.5,
+          "width": 28,
+        }
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "fontFamily": "sans-serif-condensed",
+          "fontSize": 18,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "bottom": "10%",
+        "position": "absolute",
+        "right": "5%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/components/assets/images/departures.png",
+        }
+      }
+      style={
+        Object {
+          "height": 28,
+          "opacity": 0.5,
+          "width": 28,
+        }
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "fontFamily": "sans-serif-condensed",
+          "fontSize": 18,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "bottom": "10%",
+        "flexWrap": "wrap",
+        "left": "5%",
+        "position": "absolute",
+        "width": "50%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/components/assets/images/location-pin.png",
+        }
+      }
+      style={
+        Object {
+          "height": 28,
+          "opacity": 0.5,
+          "width": 28,
+        }
+      }
+    />
+    <Text
+      numberOfLines={2}
+      style={
+        Object {
+          "fontFamily": "sans-serif-condensed",
+          "fontSize": 18,
+        }
+      }
+    />
+  </View>
+</TouchableOpacity>
+`;
