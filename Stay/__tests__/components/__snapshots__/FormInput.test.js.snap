@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInput component renders correctly Shallow rendering 1`] = `
+<View
+  style={
+    Object {
+      "height": 50,
+      "margin": 5,
+      "width": "92%",
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderColor": "#d1d7db",
+        "borderWidth": 1,
+        "height": 40,
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
