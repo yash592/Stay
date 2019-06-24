@@ -25,7 +25,7 @@ import { getAllReservations } from "../../../queries/queries.js";
 
 // Listings component to display all reservations as the default screen
 
-class Listings extends Component {
+export class Listings extends Component {
   // renderReservations function for the flatList
   // -- returns the ReservationCard component and passes it the props
   keyExtractor = (item, index) => item.id;
@@ -50,7 +50,6 @@ class Listings extends Component {
   };
 
   render() {
-    console.log(this.props.data);
     const { loading, reservations } = this.props.data;
 
     // simple loading component to let the user know that the screen is loading
