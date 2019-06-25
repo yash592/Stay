@@ -51,6 +51,7 @@ export class Listings extends Component {
 
   render() {
     const { loading, reservations } = this.props.data;
+    console.log(this.props.data);
 
     // simple loading component to let the user know that the screen is loading
 

@@ -28,9 +28,12 @@ class CreateListing extends Component {
 
   // updateCache function to update the cached data from the query and concat it with the new data
 
+  //  // I haven't passed the update cache function to the mutation as a prop as it was failing to concat new data with the cached data. The mutation works though. UpdateCache worked earlier but fails now somehow
+
   updateCache = (cache, { data: { createReservation } }) => {
-    const { reservations } = cache.readQuery({ query: getAllReservations });
-    console.log(updateCache);
+    const { reservations } = cache.readQuery({
+      query: getAllReservations
+    });
 
     cache.writeQuery({
       query: getAllReservations,
@@ -38,14 +41,14 @@ class CreateListing extends Component {
         reservations: reservations.concat(createReservation)
       }
     });
-    console.log(reservations);
   };
 
   // onReserve function called from ln 124
   // renders a button and calls onPress to make a reservation
 
   onReserve = () => (
-    <Mutation mutation={addReservationMutation} update={this.updateCache}>
+    // I haven't passed the update cache function here as it was failing to concat new data with the cached data. The mutation works though
+    <Mutation mutation={addReservationMutation}>
       {(createReservation, { data, loading, error }) => {
         console.log(data, loading, error);
         if (data) {
@@ -72,7 +75,7 @@ class CreateListing extends Component {
                   departureDate: ""
                 });
                 // Call on Actions from react-native-router-flux to go to a different screen once mutation is complete
-                Actions.listings();
+                // Actions.listings();
               });
             }}
           />
