@@ -1,4 +1,4 @@
-# Stay
+
 
 ### Stay is a hotels reservations app built to show reservations as well as create a new reservations
 
@@ -55,3 +55,4 @@ Used the standard styles object to style the components
 Used a very self explanatory structure where screens have their own directory and common components have their own.
 The queries and mutations have their separate directories.
 Images are stored in the src/components/assets folder.
+
