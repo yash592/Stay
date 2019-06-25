@@ -133,7 +133,6 @@ class CreateListing extends Component {
           />
           {this.onReserve()}
         </View>
-        <BottomNav onPress={() => Actions.listings()} />
       </View>
     );
   }
