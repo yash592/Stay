@@ -48,7 +48,10 @@ class CreateListing extends Component {
 
   onReserve = () => (
     // I haven't passed the update cache function here as it was failing to concat new data with the cached data. The mutation works though
-    <Mutation mutation={addReservationMutation}>
+    <Mutation
+      mutation={addReservationMutation}
+      refetchQueries={[{ query: getAllReservations }]}
+    >
       {(createReservation, { data, loading, error }) => {
         console.log(data, loading, error);
         if (data) {
@@ -75,7 +78,7 @@ class CreateListing extends Component {
                   departureDate: ""
                 });
                 // Call on Actions from react-native-router-flux to go to a different screen once mutation is complete
-                // Actions.listings();
+                Actions.listings();
               });
             }}
           />
