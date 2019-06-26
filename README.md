@@ -1,5 +1,5 @@
 
-!(Stay)[https://i.imgur.com/Y4GtYTN.png]
+![Stay](https://i.imgur.com/Y4GtYTN.png)
 
 ### Stay is a hotels reservations app built to show reservations as well as create a new reservations
 
