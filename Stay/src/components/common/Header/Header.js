@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { PropTypes } from "prop-types";
 
 // reusable header sticky component with title passed down as a prop
 
@@ -36,5 +37,8 @@ const styles = {
   }
 };
 
-// Make the component available to other parts of the app
+Header.propTypes = {
+  headerText: PropTypes.string.isRequired
+};
+
 export { Header };

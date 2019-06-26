@@ -1,6 +1,7 @@
 import React, { Compponent } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
 import { Actions } from "react-native-router-flux";
+import { PropTypes } from "prop-types";
 
 // BottomNav reusable component
 

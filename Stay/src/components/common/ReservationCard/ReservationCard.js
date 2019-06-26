@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { PropTypes } from "prop-types";
 
 // ReservationCard reusable pure component which can be used across the app
 
 const ReservationCard = props => {
+  const { name, arrivalDate, departureDate, hotelName } = props;
   // console.log(props);
   return (
     <TouchableOpacity style={styles.container}>
       {props.children}
       <View style={styles.nameBox}>
-        <Text style={styles.nameText}>{props.name}</Text>
+        <Text style={styles.nameText}>{name}</Text>
       </View>
       <View style={styles.arrivalDateBox}>
         <Image
@@ -17,7 +19,7 @@ const ReservationCard = props => {
           style={{ width: 28, height: 28, opacity: 0.5 }}
         />
         <Text numberOfLines={1} style={styles.text}>
-          {props.arrivalDate}
+          {arrivalDate}
         </Text>
       </View>
       <View style={styles.departureDateBox}>
@@ -26,7 +28,7 @@ const ReservationCard = props => {
           style={{ width: 28, height: 28, opacity: 0.5 }}
         />
         <Text numberOfLines={1} style={styles.text}>
-          {props.departureDate}
+          {departureDate}
         </Text>
       </View>
       <View style={styles.locationBox}>
@@ -35,7 +37,7 @@ const ReservationCard = props => {
           style={{ width: 28, height: 28, opacity: 0.5 }}
         />
         <Text numberOfLines={2} style={styles.text}>
-          {props.hotelName}
+          {hotelName}
         </Text>
       </View>
     </TouchableOpacity>
@@ -96,6 +98,13 @@ const styles = {
     fontSize: 18,
     fontFamily: "sans-serif-condensed"
   }
+};
+
+ReservationCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  arrivalDate: PropTypes.string.isRequired,
+  departureDate: PropTypes.string.isRequired,
+  hotelName: PropTypes.string.isRequired
 };
 
 export { ReservationCard };

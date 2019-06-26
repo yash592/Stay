@@ -133,6 +133,7 @@ class CreateListing extends Component {
           />
           {this.onReserve()}
         </View>
+        <BottomNav />
       </View>
     );
   }
